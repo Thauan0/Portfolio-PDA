@@ -1,0 +1,1246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+:root {
+    --bg-color: #000; /* Preto */
+    --text-color: #fff; /* Branco */
+    --main-color: #2e2be2; /* Azul */
+    --neon-color: #00f5ff; /* Azul Neon */
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+/* Estilo geral do header */
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* Espaça o título e o menu para as extremidades */
+    align-items: center; /* Alinha verticalmente o título e o menu */
+    padding: 10px 20px; /* Adiciona algum espaçamento ao redor do header */
+}
+
+/* Estilo do título */
+.header-title {
+    font-size: 24px; /* Ajustar o tamanho conforme necessário */
+    color: #fff; /* Cor do texto do título */
+}
+
+/* Estilo do menu de navegação */
+.navbar {
+    display: flex; /* Utiliza flexbox para o menu */
+    gap: 1rem; /* Espaçamento entre os itens do menu */
+    justify-content: center; /* Centraliza os itens do menu horizontalmente */
+    flex: 1; /* Permite que o menu ocupe o espaço disponível */
+    margin: 0 auto; /* Centraliza o menu na largura disponível */
+}
+
+.navbar a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: #fff; /* Cor do texto dos links */
+    transition: all 0.3s ease; /* Adiciona uma transição suave para os efeitos */
+}
+
+/* Efeito de iluminação azul no hover */
+.navbar a:hover {
+    color: #00f; /* Cor do texto ao passar o cursor */
+    text-shadow: 0 0 10px #00f; /* Adiciona um brilho azul ao redor do texto */
+}
+
+/* Esconde o checkbox */
+.menu-toggle {
+    display: none;
+}
+
+/* Esconde o ícone do menu em telas grandes */
+.menu-icon {
+    display: none; /* Exibe o ícone do menu em telas menores */
+    cursor: pointer;
+}
+
+/* Estilo para menu responsivo */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu em telas menores */
+    }
+
+    .navbar {
+        display: none; /* Oculta o menu padrão em telas menores */
+        flex-direction: column; /* Alinha itens do menu verticalmente */
+        gap: 0;
+        position: absolute;
+        top: 60px; /* Ajuste conforme a altura do header */
+        left: 0;
+        background-color: #fff; /* Cor de fundo do menu */
+        width: 100%;
+        z-index: 1000; /* Coloca o menu acima dos outros elementos */
+    }
+
+    .menu-toggle:checked ~ .navbar {
+        display: flex; /* Exibe o menu quando o toggle está ativado */
+    }
+
+    .navbar a {
+        padding: 1rem;
+        border-bottom: 1px solid #ccc; /* Adiciona bordas aos itens do menu */
+    }
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 995px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 60%;
+        border-left: 3px solid var(--main-color);
+        border-bottom: 3px solid var(--main-color);
+        border-bottom-left-radius: 2rem;
+        padding: 2rem 3%;
+        background-color: var(--bg-color);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar a {
+        font-size: 2rem;
+        margin: 2rem 0;
+        width: 100%;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        background-color: rgba(46, 43, 226, 0.2);
+    }
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9%;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.home-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-img img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%; /* Faz a imagem ficar redonda */
+    box-shadow: 0 0 25px var(--main-color);
+    transition: transform 0.3s ease;
+}
+
+.home-img img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px var(--main-color));
+}
+
+.home-content {
+    flex: 2;
+    text-align: left;
+}
+
+.home-content h1 {
+    font-size: 4.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color); /* Branco */
+}
+
+.home-content span {
+    color: var(--main-color);
+}
+
+.home-content h3 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.home-content p.description {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.home-content p.lorem-text {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: #aaa;
+}
+
+.social-icon {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Ajuste dos ícones sociais */
+.social-icon a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background: #444; /* Fundo cinza escuro */
+    border: 0.2rem solid var(--main-color); /* Borda azul neon visível */
+    font-size: 1.6rem;
+    border-radius: 50%;
+    color: var(--main-color); /* Cor azul neon */
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon a:hover {
+    transform: scale(1.3) translateY(-5px);
+    background: var(--main-color); /* Fundo azul neon ao passar o mouse */
+    box-shadow: 0 0 25px var(--main-color); /* Sombra azul neon */
+    color: var(--bg-color); /* Cor do ícone ao passar o mouse */
+}
+
+
+
+.btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--neon-color);
+    color: var(--text-color);
+    font-weight: 600;
+    border-radius: 5rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 5px var(--neon-color), 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--neon-color), 0 0 30px var(--neon-color), 0 0 60px var(--neon-color);
+}
+
+/* Animação de digitação */
+.typing-text {
+    font-size: 3rem; /* Ajustar o tamanho da fonte conforme necessário */
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid var(--main-color);
+    animation: typing 6s steps(22) infinite, blink-caret 0.75s step-end infinite;
+    color: var(--main-color); /* Cor inicial da animação */
+}
+
+.typing-text span {
+    display: inline-block;
+    animation: change-color 6s steps(22) infinite; /* Troca a cor durante a digitação */
+}
+
+/* Animações */
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--main-color); }
+}
+
+@keyframes change-color {
+    0%, 50% { color: var(--main-color); }
+    50.01%, 100% { color: var(--neon-color); }
+}
+
+@media (max-width:1000px) { 
+    .home {
+        gap:4rem;
+    }
+}
+
+@media (max-width:995px) {
+    .home {
+        flex-direction: column;
+        margin: 5rem 4rem;
+    }
+}
+
+.home .home-content h3 {
+    font-size: 2.5rem
+}
+
+.home-content h1 {
+    font-size: 5rem;
+}
+
+.home-img img {
+    width: 70vw;
+    margin-top: 4rem;
+}
+
+/* Seção de serviços */
+#servicos {
+    background: var(--bg-color); /* Mantendo o fundo */
+    color: var(--text-color);
+    padding: 5rem 9%;
+    text-align: center;
+    position: relative; /* para a linha divisória */
+}
+
+/* Título da seção de serviços */
+#servicos h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--main-color);
+}
+
+/* Linha divisória */
+/* Linha de destaque na seção serviços */
+#servicos::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--main-color); /* Linha na cor principal */
+    margin: auto;
+}
+
+/* Container para os serviços */
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* Box de serviço */
+.service-box {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--main-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 300px; /* Ajustar o tamanho conforme necessário */
+    text-align: center;
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Adicionado para o efeito neon */
+}
+
+/* Efeito neon para o box de serviço ao passar o cursor */
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+/* Adiciona efeito neon ao box de projetos */
+.projeto-box {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--main-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 300px; /* Ajustar o tamanho conforme necessário */
+    text-align: center;
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Adicionado para o efeito neon */
+}
+
+/* Efeito neon específico para o box de projetos ao passar o cursor */
+.projeto-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--main-color);
+    border: 2px solid var(--main-color);
+    background: #1e1e1e; /* Fundo escuro para destaque do neon */
+    color: #ffffff; /* Cor do texto em contraste com o fundo escuro */
+}
+
+/* Título do serviço */
+.service-box h4,
+.projeto-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+/* Descrição do serviço */
+.service-box p,
+.projeto-box p {
+    font-size: 1.6rem;
+    color: #dddddd;
+    line-height: 1.5;
+}
+
+/* Estilo da seção de serviços para dispositivos menores */
+@media (max-width: 895px) {
+    .services h2 {
+        margin-bottom: 3rem;
+    }
+    .services-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Estilo da seção de serviços para dispositivos ainda menores */
+@media (max-width: 991px) {
+    section { 
+        padding: 10rem 3% 2rem;
+    }
+}
+
+/* Adicional para a seção de serviços */
+.services {
+    padding-bottom: 7rem;
+}
+
+       /* Ajuste do scroll em mobile */
+html::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+/* Ajustes específicos para mobile */
+@media (max-width: 995px) {
+    .home {
+        flex-direction: column;
+        margin: 5rem 1rem; /* Ajuste de margens */
+    }
+
+    .home-img img {
+        width: 80vw; /* Ajustar do tamanho da imagem em mobile */
+        margin-top: 2rem;
+    }
+
+    .home-content h1 {
+        font-size: 3.5rem; /* Ajuste do tamanho da fonte */
+    }
+
+    .home-content h3 {
+        font-size: 2rem; /* Ajuste do tamanho da fonte */
+    }
+
+    .home-content p {
+        font-size: 1.4rem; /* Ajuste do tamanho da fonte */
+    }
+
+    .social-icon a {
+        width: 2.5rem; /* Ajustar do tamanho dos ícones sociais */
+        height: 2.5rem;
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem; /* Ajuste do padding do botão */
+        font-size: 1.4rem; /* Ajuste do tamanho da fonte do botão */
+    }
+
+    .services-container {
+        grid-template-columns: 1fr; /* Ajuste para coluna única em mobile */
+    }
+}
+
+/* Correção de bordas brancas */
+body {
+    border: none; /* Remove bordas inesperadas */
+}
+
+section {
+    border: none; /* Remove bordas inesperadas das seções */
+    padding: 5rem 1rem; /* Ajuste do padding */
+}
+
+/* Ajuste do botão */
+.btn {
+    border: none; /* Remove borda do botão */
+}
+
+/* Ajuste de caixa de serviço */
+.service-box {
+    border: 1px solid var(--main-color); /* Manter borda principal */
+    box-shadow: 0 0 10px var(--main-color); /* Ajuste do box-shadow */
+}
+
+/* Ajuste de ícones sociais */
+.social-icon a {
+    border: none; /* Remove borda dos ícones sociais */
+    box-shadow: none; /* Remove sombra dos ícones sociais */
+}
+
+/* habilidades */
+
+.skills {
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.skills .container {
+    background: var(--main-color); /* Azul */
+    color: var(--text-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 20%; /* Ajusta o tamanho do container */
+    margin: auto; /* Centraliza o container */
+}
+
+.skills .container .row {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    gap: 2rem; /* Espaçamento entre os itens */
+}
+
+.skills .bar {
+    margin-bottom: 15px;
+    padding: 1rem; /* Ajusta o padding */
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .bar .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .bar img {
+    width: 80px; /* Ajusta o tamanho da logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skills .bar span {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto */
+}
+
+.skills .bar {
+    margin-bottom: 15px;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .bar .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .bar img {
+    width: 80px; /* Ajusta o tamanho da logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skills .bar span {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto */
+}
+
+.skills .bar {
+    margin-bottom: 15px;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .bar .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .bar img {
+    width: 80px; /* Ajusta o tamanho da logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skills .bar span {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto */
+}
+.skills .bar {
+    margin-bottom: 15px;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .bar .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .bar img {
+    width: 80px; /* Ajusta o tamanho da logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skills .bar span {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto */
+}
+
+.skills .bar {
+    margin-bottom: 15px;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills .bar .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .bar img {
+    width: 80px; /* Ajusta o tamanho da logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skills .bar span {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto */
+}
+
+.skills {
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    margin-top: 5rem;
+    border: 2px solid var(--neon-color); /* Linha branca fina em volta */
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    border-color: #fff;
+}
+
+.skills .container {
+    background: var(--main-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.skills .bar {
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--bg-color);
+    box-shadow: 0 4px 10px var(--main-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills .bar:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.skills .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills .info img {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+
+.skills .info span {
+    font-size: 1.8rem;
+}
+
+/* Texto abaixo das habilidades */
+.skills-text {
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Estilização das laterais com círculos neon */
+.skills::before,
+.skills::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: var(--neon-color);
+    box-shadow: 0 0 20px var(--neon-color);
+    opacity: 0.5;
+}
+
+.skills::before {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    left: -50px;
+}
+
+.skills::after {
+    width: 200px;
+    height: 200px;
+    bottom: -60px;
+    right: -60px;
+}
+
+/* Estilos gerais */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo da seção "Sobre Mim" */
+#sobre-mim {
+    padding: 50px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 60%;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    margin-right: 20px;
+}
+
+.about-text h2 {
+    margin-top: 0;
+}
+
+.about-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-large {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.image-small {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Círculos neon de fundo */
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+#divider-line {
+    height: 3px;
+    background-color: #000000;
+    margin: 1.5px;
+}
+
+/* Estilos gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: #111;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 24px;
+    color: #fff;
+}
+
+.navbar a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+}
+/* Estilos para a seção "Sobre Mim" */
+
+.skills {
+    /* Outros estilos da seção de habilidades */
+    padding: 20px;
+}
+
+.skills-text {
+    /* Mantém o texto da seção */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 20px; /* Ajusta a margem superior */
+}
+
+.skills-list-box {
+    display: inline-block; /* Faz a caixa de texto se ajustar ao tamanho da lista */
+    background: transparent; /* Fundo transparente */
+    border: 1px solid white; /* Borda fina e branca */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    margin-top: 20px; /* Margem superior para separar do texto */
+}
+
+.skills-list {
+    list-style: none; /* Remove os marcadores */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove a margem padrão */
+}
+
+.skills-list li {
+    font-size: 16px; /* Ajuste do tamanho da fonte */
+    color: white; /* Cor do texto */
+    margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+.sobre-mim {
+    padding: 60px 0;
+    background: #000; /* Fundo escuro da página */
+    color: #fff; /* Cor do texto */
+}
+
+.about-title {
+    font-size: 2.5em;
+    color: #00f; /* Azul neon para o título */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00f, 0 0 20px #00f; /* Efeito neon no texto */
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #000000; /* Fundo escuro para a caixa */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza a caixa */
+}
+
+.about-text {
+    flex: 1;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.about-image {
+    flex: 0.5;
+    text-align: center;
+}
+
+.about-image img {
+    border-radius: 10px;
+    border: 5px solid #00f; /* Borda azul neon */
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5), 0 0 20px rgba(0, 0, 255, 0.3); /* Efeito sombreado com toques neon */
+}
+
+/* Efeito de animação no hover */
+.sobre-mim:hover .about-content {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        margin-bottom: 20px;
+    }
+}
+
+.educacao {
+    padding: 50px 0;
+    background-color: #111; /* Fundo escuro */
+    color: #fff;
+    text-align: center;
+}
+
+.educacao .heading {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.educacao .heading span {
+    color: #00ffff; /* Destaque em neon azul para a palavra "Educação" */
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+}
+
+.container.right {
+    left: 50%;
+}
+
+.container .content {
+    padding: 20px 30px;
+    background-color: #030303; /* Cor de fundo para o conteúdo da timeline */
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid #fff; /* Borda branca fina */
+}
+
+.timeline .container.right .content {
+    left: -100%; /* Alinhamento à direita */
+}
+
+.content h2 {
+    font-size: 1.5em;
+    color: #0400ff; /* Cor do título em neon azul */
+}
+
+.content p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Estilo para a linha divisória */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: rgb(100, 100, 228);
+    top: 0;
+    bottom: 0;
+    left: 52%;
+    margin-left: -3px;
+}
+
+/* Ajuste do espaço para links de certificações */
+.educacao .certificacoes {
+    margin-top: 30px;
+    text-align: left;
+    border: 1px solid #00ffff; /* Borda neon para destacar as certificações */
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+}
+
+.educacao .certificacoes h3 {
+    font-size: 1.5em;
+    color: #00ffff; /* Destaque em neon azul para o título das certificações */
+    margin-bottom: 15px;
+}
+
+.educacao .certificacoes ul {
+    list-style-type: none; /* Remove marcadores padrão */
+    padding-left: 0;
+}
+
+.educacao .certificacoes ul li {
+    margin-bottom: 10px;
+}
+
+.educacao .certificacoes ul li a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #00ffff; /* Linha em neon azul abaixo dos links */
+    padding-bottom: 2px;
+}
+
+.educacao .certificacoes ul li a:hover {
+    color: #00ffff;
+    background-color: rgba(0, 0, 0, 0.1); /* Efeito de destaque no hover */
+}
+
+/* Estilo da seção de projetos */
+#projetos {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 5rem 9%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#projetos {
+    background: var(--bg-color); /* Manter o fundo do site */
+    color: var(--text-color);
+    padding: 5rem 9%;
+    text-align: center;
+    position: relative; /* para a linha divisória */
+}
+
+/* Estilo da seção de projetos */
+#projetos {
+    background: var(--bg-color); /* Fundo da seção */
+    color: var(--text-color);
+    padding: 5rem 9%;
+    text-align: center;
+}
+
+/* Título da seção de projetos */
+#projetos h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--main-color); /* Azul para o título */
+}
+
+/* Container para os projetos */
+.projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Box de projeto */
+.projeto-box {
+    background: #020202; /* Fundo branco para os projetos */
+    color: #faf7fc; /* Texto preto para contraste */
+    border: 2px solid var(--main-color); /* Borda azul neon */
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 250px; /* Diminuído para ficar menor */
+    text-align: center;
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Para o efeito neon */
+}
+
+/* Efeito neon para o box de projeto ao passar o cursor */
+.projeto-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--main-color);
+    border: 2px solid var(--main-color);
+    background: #ffffff; /* Fundo claro para destaque */
+    color: #030303; /* Texto preto em contraste */
+}
+
+/* Título do projeto */
+.projeto-box h4 {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    color: var(--main-color); /* Azul para o título */
+}
+
+/* Descrição do projeto */
+.projeto-box p {
+    font-size: 1.4rem;
+    color: #5771e7; /* Texto escuro para melhor legibilidade */
+    line-height: 1.5;
+}
+
+/* Estilo para dispositivos menores */
+@media (max-width: 768px) {
+    .projetos-container {
+        flex-direction: column; /* Empilha os boxes verticalmente em dispositivos menores */
+    }
+    .projeto-box {
+        width: 100%; /* Largura total em dispositivos menores */
+    }
+}
+
+/* Estilo para a seção de contatos */
+#contatos {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 3rem 9%;
+    text-align: center;
+    position: relative;
+}
+
+/* Título da seção de contatos */
+#contatos h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #ffffff; /* Cor branca para o título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Container para os itens de contato */
+.contatos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Box de contato com borda fina e fundo transparente */
+.contato-box {
+    background: rgba(255, 255, 255, 0.1); /* Fundo transparente */
+    border: 1px solid #ffffff; /* Borda fina e branca */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-width: 600px; /* Ajusta para o tamanho máximo do container */
+    margin: auto; /* Centraliza o box */
+}
+
+/* Item de contato */
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff; /* Cor do texto e ícones em branco */
+}
+
+/* Ícone de contato */
+.contato-icon {
+    font-size: 1.5rem;
+    color: #ffffff; /* Cor branca para os ícones */
+}
+
+/* Informações de contato */
+.contato-info {
+    font-size: 1.4rem;
+    color: #ffffff; /* Cor branca para o texto dentro dos boxes */
+}
+
+/* Número de telefone em azul */
+.telefone {
+    color: #007bff; /* Azul para o número */
+}
+
+/* Ajuste para dispositivos menores */
+@media (max-width: 768px) {
+    .contato-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
